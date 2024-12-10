@@ -1,6 +1,6 @@
 {
   "name": "@paymentsgate/nodejs-secure-api",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "PaymentsGate API client",
   "exports": {
     ".": {
@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/paymentsgate/nodejs-secure-api.git"
+    "url": "git+https://github.com/paymentsgate/nodejs-secure-api.git"
   },
   "keywords": [
     "paymentsgate",
@@ -63,7 +63,12 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@paymentsgate/nodejs-secure-api": "^0.1.4",
     "dayjs": "^1.11.13",
     "jwt-decode": "^4.0.0"
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
   }
 }

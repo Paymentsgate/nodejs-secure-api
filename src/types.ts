@@ -145,7 +145,7 @@ export type GetQuoteResponseDTO = {
   quotes: QuoteEntity[]
 }
 
-export type DepositAddressResponse = {
+export type DepositAddressResponseDTO = {
   currency: CurrencyDTO;
   address: string;
   expiredAt: Date;

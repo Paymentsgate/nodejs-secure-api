@@ -1,5 +1,5 @@
 import { ApiEndpoints, PRIMARY_CRYPTO_CURRENCY_ID, UserAgent } from "./constants";
-import { AccessTokenRequestDTO, AccessTokenResponseDTO, AccountCredentialsFileScheme, ApiClientConfig, ApiClientConfigFromFile, ApiClientConfigFromKeys, AssetsDTO, CreatePayInDTO, CreatePayInResponseDTO, CreatePayInSyncResponseDTO, CreatePayOutDTO, CreatePayOutResponseDTO, DepositAddressResponse, ErrorResponseType, GetQuoteDTO, InvoiceDTO } from "./types";
+import { AccessTokenRequestDTO, AccessTokenResponseDTO, AccountCredentialsFileScheme, ApiClientConfig, ApiClientConfigFromFile, ApiClientConfigFromKeys, AssetsDTO, CreatePayInDTO, CreatePayInResponseDTO, CreatePayInSyncResponseDTO, CreatePayOutDTO, CreatePayOutResponseDTO, DepositAddressResponse, DepositAddressResponseDTO, ErrorResponseType, GetQuoteDTO, GetQuoteResponseDTO, InvoiceDTO } from "./types";
 
 import { jwtDecode } from 'jwt-decode';
 
@@ -96,8 +96,8 @@ export class ApiClient {
     return this.call<AssetsDTO>('GET', ApiEndpoints.assets.list);
   }
 
-  public async getDepositAddress(): Promise<any> {
-    return this.call<any>('GET', `${ApiEndpoints.assets.deposit}?currencyId=${PRIMARY_CRYPTO_CURRENCY_ID}`);
+  public async getDepositAddress(): Promise<DepositAddressResponseDTO> {
+    return this.call<DepositAddressResponseDTO>('GET', `${ApiEndpoints.assets.deposit}?currencyId=${PRIMARY_CRYPTO_CURRENCY_ID}`);
   }
 
   public async createPayIn(params: CreatePayInDTO): Promise<CreatePayInResponseDTO> {
@@ -163,8 +163,8 @@ export class ApiClient {
     return this.call<CreatePayOutResponseDTO, CreatePayOutDTO>('POST', ApiEndpoints.invoices.payout, params);
   }
 
-  public async quote(params: GetQuoteDTO): Promise<DepositAddressResponse> {
-    return this.call<DepositAddressResponse>('GET', `${ApiEndpoints.fx.quote}?amount=${params.amount}&currency_from=${params.currencyFrom}&currency_to=${params.currencyTo}`);
+  public async quote(params: GetQuoteDTO): Promise<GetQuoteResponseDTO> {
+    return this.call<GetQuoteResponseDTO>('GET', `${ApiEndpoints.fx.quote}?amount=${params.amount}&currency_from=${params.currencyFrom}&currency_to=${params.currencyTo}`);
   }
 
   public setDebug(debug: boolean) {
