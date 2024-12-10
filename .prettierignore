@@ -1,0 +1,6 @@
+dist
+/lib/
+*.js
+.gitlab-ci.yml
+*.json 
+README.md
